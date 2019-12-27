@@ -101,7 +101,6 @@ public class FileSystem {
     public void file(String[] name, int k) throws BadFileNameException, OutOfSpaceException {
 
         Tree workingTree = fileSystemTree;
-        String fileName = name[name.length - 1];
 
         if (name== null || name.length == 0 || name[0] != "root") {
 
@@ -109,6 +108,7 @@ public class FileSystem {
 
         }
 
+        String fileName = name[name.length - 1];
         if (k > FileSystem.fileStorage.countFreeSpace()) { //not enough space free
 
             Leaf file = FileExists(name);
@@ -117,7 +117,7 @@ public class FileSystem {
 
                 throw new OutOfSpaceException();
 
-            } else if (k <= (FileSystem.fileStorage.countFreeSpace() - file.allocations.length)) { //if there will be enough space free after deleting the old file, do it
+            } else if (k <= (FileSystem.fileStorage.countFreeSpace() + file.allocations.length)) { //if there will be enough space free after deleting the old file, do it
 
                 rmfile(name);
 
