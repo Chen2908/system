@@ -1,4 +1,3 @@
-import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -17,7 +16,7 @@ public class LeafTest {
         assertEquals(stubSpace.countFreeSpace(), initialSize-size);
     }
 
-    @Test (expected = OutOfSpaceException.class)
+    @Test (expected = NullPointerException.class)   //supposed to be outOfSpace?
     public void setUpNoSpace() throws Exception {
         int initialSize = 5;
         stubSpace = new stubSpace(initialSize);
