@@ -1,3 +1,4 @@
+package system;
 
 import java.nio.file.DirectoryNotEmptyException;
 import java.util.Arrays;
@@ -135,7 +136,7 @@ public class FileSystem {
         //will now be at same level as file, contained in workingTree
         if (workingTree.children.containsKey(fileName)) { //file exists, remove (reached this point, so file can fit)
 
-            if (workingTree.children.get(fileName).getClass().getName() == "system.Tree") { //name of existing directory
+            if (workingTree.children.get(fileName).getClass().getName() == "system.system.Tree") { //name of existing directory
 
                 throw new BadFileNameException();
 
@@ -259,7 +260,7 @@ public class FileSystem {
             return null;
         Node found = PathExists(name);
 
-        if (found == null || found.getClass().getName() == "system.Node") {
+        if (found == null || found.getClass().getName() == "system.system.Node") {
 
             return null;
 
@@ -279,7 +280,7 @@ public class FileSystem {
             return null;
         Node found = PathExists(name);
 
-        if (found == null || found.getClass().getName() == "system.Leaf") {
+        if (found == null || found.getClass().getName() == "system.system.Leaf") {
 
             return null;
 

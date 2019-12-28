@@ -1,5 +1,7 @@
 import org.junit.Before;
 import org.junit.Test;
+import system.Node;
+import system.Tree;
 
 import static org.junit.Assert.*;
 
@@ -10,8 +12,8 @@ public class NodeTest {
     @Before
     public void setUp(){
         node = new Tree("root");
-        node.depth=1;
-        node.parent=null;
+//        node.depth=1;
+//        node.parent=null;
     }
 
     @Test
