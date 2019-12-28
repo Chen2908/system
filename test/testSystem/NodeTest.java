@@ -1,3 +1,5 @@
+package testSystem;
+
 import org.junit.Before;
 import org.junit.Test;
 import system.Node;
@@ -16,11 +18,11 @@ public class NodeTest {
 //        node.parent=null;
     }
 
-    @Test
-    public void getPath() {
-        String [] result = node.getPath();
-        assertEquals(result.length , 1);
-        assertEquals(result[0] , "root");
-
-    }
+//    @Test
+//    public void getPath() {
+//        String [] result = node.getPath();
+//        assertEquals(result.length , 1);
+//        assertEquals(result[0] , "root");
+//
+//    }
 }

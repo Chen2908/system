@@ -1,3 +1,5 @@
+package testSystem;
+
 import org.junit.Before;
 import org.junit.Test;
 import system.BadFileNameException;
@@ -9,7 +11,7 @@ import static org.junit.Assert.*;
 
 public class FileSystemTest {
 
-    public FileSystem fileSystem;
+    private FileSystem fileSystem;
 
     @Before
     public void initialize()

@@ -1,3 +1,5 @@
+package testSystem;
+
 import org.junit.Test;
 import system.FileSystem;
 import system.Leaf;
@@ -7,7 +9,7 @@ import static junit.framework.TestCase.assertEquals;
 
 public class LeafTest {
 
-    private system.SpaceStub SpaceStub;
+    private SpaceStub SpaceStub;
     private Leaf leaf;
 
     @Test
