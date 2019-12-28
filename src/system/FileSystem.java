@@ -38,7 +38,7 @@ public class FileSystem {
 
         Tree workingTree = fileSystemTree;
 
-        if (name == null || name.length == 0 || name[0] != "root" || (FileExists(name) != null)) {
+        if (name==null || name.length == 0 || name[0] != "root" || (FileExists(name) != null)) {
 
             throw new BadFileNameException();
 
@@ -134,7 +134,7 @@ public class FileSystem {
         //will now be at same level as file, contained in workingTree
         if (workingTree.children.containsKey(fileName)) { //file exists, remove (reached this point, so file can fit)
 
-            if (workingTree.children.get(fileName).getClass().getName() == "system.system.Tree") { //name of existing directory
+            if (workingTree.children.get(fileName).getClass().getName().equals("system.Tree")) { //name of existing directory
 
                 throw new BadFileNameException();
 
@@ -258,7 +258,7 @@ public class FileSystem {
             return null;
         Node found = PathExists(name);
 
-        if (found == null || found.getClass().getName() == "system.system.Node") {
+        if (found == null || found.getClass().getName().equals("system.Node")) {
 
             return null;
 
@@ -278,7 +278,7 @@ public class FileSystem {
             return null;
         Node found = PathExists(name);
 
-        if (found == null || found.getClass().getName() == "system.system.Leaf") {
+        if (found == null || found.getClass().getName().equals("system.Leaf")) {
 
             return null;
 
