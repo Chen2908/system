@@ -9,20 +9,19 @@ import static org.junit.Assert.*;
 
 public class NodeTest {
 
-    private Node node;
+    private Node node1;
 
     @Before
     public void setUp(){
-        node = new Tree("root");
-//        node.depth=1;
-//        node.parent=null;
+        node1 = new Tree("root");
+        node1.parent=null;
     }
 
-//    @Test
-//    public void getPath() {
-//        String [] result = node.getPath();
-//        assertEquals(result.length , 1);
-//        assertEquals(result[0] , "root");
-//
-//    }
+    @Test
+    public void getPathRoot() {
+        String[] result = node1.getPath();
+        //assertEquals(result.length , 1);
+        assertTrue(result.length==0);
+    }
+
 }

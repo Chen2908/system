@@ -53,8 +53,6 @@ public class Space {
      * @param file File to deallocate.
      */
     public void Dealloc(Leaf file) {
-        if (file == null)
-            return;
         for (int i = 0; i < file.allocations.length; i++) {
 
             blocks[file.allocations[i]] = null;
