@@ -35,6 +35,9 @@ public class Space {
      */
     public void Alloc(int size, Leaf file) throws OutOfSpaceException {
 
+        if (size > countFreeSpace())
+            throw new OutOfSpaceException();
+
         file.allocations = new int[size];
 
         //we reached this point, therefore there is enough free space

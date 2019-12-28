@@ -4,7 +4,6 @@ import org.junit.Before;
 import org.junit.Test;
 import system.BadFileNameException;
 import system.FileSystem;
-import system.Node;
 import system.OutOfSpaceException;
 import java.nio.file.DirectoryNotEmptyException;
 import java.util.Arrays;
@@ -43,16 +42,14 @@ public class FileSystemTest {
         assertNotNull(fileSystem.DirExists(path));
     }
 
-//    @Test
-//    //this test fails due to line 41 in FileSystem trying to check if the file exists even though
-//    // it is a directory and no a file. According to demand should do nothing.
-//    public void testDirDupName() throws Exception{
-//        String [] path = new String[]{"root", "A", "B"};
-//        fileSystem.dir(path);  //create dir, no exception
-//        String [] path2 = new String[]{"root", "A", "B"};
-//        fileSystem.dir(path2);   // duplicate. should do nothing
-//        assertNotNull(fileSystem.DirExists(path));
-//    }
+    @Test
+    public void testDirDupName() throws Exception{
+        String [] path = new String[]{"root", "A", "B"};
+        fileSystem.dir(path);  //create dir, no exception
+        String [] path2 = new String[]{"root", "A", "B"};
+        fileSystem.dir(path2);   // duplicate. should do nothing
+        assertNotNull(fileSystem.DirExists(path));
+    }
 
     @Test
     public void disk() throws Exception{
@@ -109,7 +106,7 @@ public class FileSystemTest {
         assertNotNull(fileSystem.FileExists(path));
     }
 
-    @Test  //should be out of space exception, not null pointer, replace with comment
+    @Test
     public void testFileTooLargeFileExistsNoDelete() throws Exception{
         Exception exception = null;
         String [] path = new String[]{"root", "A", "Aa"};
@@ -124,8 +121,7 @@ public class FileSystemTest {
             exception=e;
         }
         assertNotNull(exception);
-        //assertEquals(OutOfSpaceException.class, exception.getClass());
-        assertEquals(NullPointerException.class, exception.getClass());
+        assertEquals(OutOfSpaceException.class, exception.getClass());
 
     }
 

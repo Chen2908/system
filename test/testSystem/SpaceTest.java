@@ -38,7 +38,7 @@ public class SpaceTest {
         }
     }
 
-    @Test //this will pass but should be OutOfSpaceException instead of nullpointerexpection
+    @Test
     public void allocTooBig() throws OutOfSpaceException{
        Exception exception = null;
         int filesize = 11;
@@ -49,8 +49,7 @@ public class SpaceTest {
             exception = e;
         }
         assertNotNull(exception);
-        //assertEquals(exception.getClass(), OutOfSpaceException.class);
-        assertEquals(exception.getClass(), NullPointerException.class);
+        assertEquals(exception.getClass(), OutOfSpaceException.class);
     }
 
     @Test
