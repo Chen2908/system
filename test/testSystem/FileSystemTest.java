@@ -5,7 +5,6 @@ import org.junit.Test;
 import system.BadFileNameException;
 import system.FileSystem;
 import system.OutOfSpaceException;
-
 import java.nio.file.DirectoryNotEmptyException;
 import static org.junit.Assert.*;
 
@@ -38,6 +37,14 @@ public class FileSystemTest {
         String [] path = new String[]{};
         fileSystem.dir(path);
     }
+
+    @Test
+    public void testDirGoodName() throws Exception{
+        String [] path = new String[]{"root", "A", "B", "Bb"};
+        fileSystem.dir(path);
+        assertNotNull(fileSystem.DirExists(path));
+    }
+
 
     @Test
     public void disk() {
