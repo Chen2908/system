@@ -121,7 +121,8 @@ public class FileSystem {
                 rmfile(name);
 
             }
-
+            else
+                throw new OutOfSpaceException();
         }
 
         //loop until level containing file

@@ -27,7 +27,6 @@ public class SpaceTest {
         parentOfLeafStub = new TreeStub("A");
         leafStub = new LeafStub("Aa", 2);
         leafStub.parent=parentOfLeafStub;
-
     }
 
 

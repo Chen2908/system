@@ -96,14 +96,15 @@ public class FileSystemTest {
         fileSystem.file(path, 25);
     }
 
-    @Test //should be out of space exception, not null pointer
+    @Test
     public void testFileRoot() throws Exception{
-        String [] path = new String[]{"root"};
+        String [] path = new String[]{"root", "a"};
         int prevFileStorage = FileSystem.fileStorage.countFreeSpace();
         int k = 20;
         fileSystem.file(path, k); //create file, no exception
         assertEquals(FileSystem.fileStorage.countFreeSpace(), prevFileStorage-k);
         assertNotNull(fileSystem.FileExists(path));
+
     }
 
     @Test
@@ -122,36 +123,46 @@ public class FileSystemTest {
         }
         assertNotNull(exception);
         assertEquals(OutOfSpaceException.class, exception.getClass());
-
     }
 
     @Test
     public void testFileTooLargeFileExists() throws Exception{
         String [] path = new String[]{"root", "A", "Aa"};
         int prevFileStorage = FileSystem.fileStorage.countFreeSpace();
-        int k = 20;
+        int k = 3;
         fileSystem.file(path, k); //create file, no exception
+        assertEquals(FileSystem.fileStorage.countFreeSpace(), prevFileStorage-k);
+        Object leaf = fileSystem.FileExists(path);
+        assertNotNull(leaf);
+        k = 20;
         fileSystem.file(path, k); // try to create file, replace old file
         assertEquals(FileSystem.fileStorage.countFreeSpace(), prevFileStorage-k);
-        assertNotNull(fileSystem.FileExists(path));
+        Object leaf2 = fileSystem.FileExists(path);
+        assertNotNull(leaf2);
+        assertNotEquals(leaf, leaf2);
+        k = 15;
+        fileSystem.file(path, k); // try to create file, replace old file
+        assertEquals(FileSystem.fileStorage.countFreeSpace(), prevFileStorage-k);
+        Object leaf3 = fileSystem.FileExists(path);
+        assertNotNull(leaf3);
+        assertNotEquals(leaf2, leaf3);
     }
 
-
-    @Test
-    public void lsdirNotExist() {
-        String [] path = new String[]{"root", "A", "Ab"};
-        String[] result = fileSystem.lsdir(path);
-        assertNull(result);
-    }
 
     @Test
     public void lsdirExist() throws Exception{
-        String [] files = {"Ac", "Ab"};
-        String [] pathfile1 = new String[]{"root", "A", "Ab"};
-        String [] pathfile2 = new String[]{"root", "A", "Ac"};
+        String [] pathroot = new String[]{"root", "A", "Ab"};
+        String[] resultroot = fileSystem.lsdir(pathroot);
+        assertNull(resultroot);
+
+        String [] files = {"file1", "b", "a file"};
+        String [] pathfile1 = new String[]{"root", "A", "file1"};
+        String [] pathfile2 = new String[]{"root", "A", "b"};
+        String [] pathfile3 = new String[]{"root", "A", "a file"};
         String [] path = new String[]{"root", "A"};
         fileSystem.file(pathfile1, 3);
         fileSystem.file(pathfile2, 3);
+        fileSystem.file(pathfile3, 3);
         String[] result = fileSystem.lsdir(path);
         Arrays.sort(files);
         assertNotNull(result);
