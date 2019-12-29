@@ -4,12 +4,14 @@ import org.junit.Test;
 import system.FileSystem;
 import system.Leaf;
 import system.OutOfSpaceException;
-import system.SpaceStub;
+import Stubs.SpaceStub;
+
 import static junit.framework.TestCase.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class LeafTest {
 
-    private SpaceStub SpaceStub;
+    private Stubs.SpaceStub SpaceStub;
     private Leaf leaf;
 
     @Test
@@ -22,7 +24,7 @@ public class LeafTest {
         assertEquals(SpaceStub.countFreeSpace(), initialSize-size);
     }
 
-    @Test (expected = NullPointerException.class)   //supposed to be outOfSpace?
+    @Test (expected = OutOfSpaceException.class)
     public void setUpNoSpace() throws Exception {
         int initialSize = 5;
         SpaceStub = new SpaceStub(initialSize);
@@ -30,6 +32,8 @@ public class LeafTest {
         int size = 10;
         leaf = new Leaf("Ac", size);
     }
+
+
 
 
 }

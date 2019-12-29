@@ -20,7 +20,6 @@ public class NodeTest {
     @Test
     public void getPathRoot() {
         String[] result = node1.getPath();
-        //assertEquals(result.length , 1);
         assertTrue(result.length==0);
     }
 

@@ -227,9 +227,6 @@ public class FileSystem {
 
 
     private Node PathExists(String[] name) {
-        if (name == null || name.length == 0)
-            return null;
-
         Tree workingTree = fileSystemTree;
 
         for (int i = 0; i < name.length - 1; i++) {
@@ -254,8 +251,6 @@ public class FileSystem {
      * @return File if exists, \c null otherwise
      */
     public Leaf FileExists(String[] name) {
-        if (name == null || name.length == 0)
-            return null;
         Node found = PathExists(name);
 
         if (found == null || found.getClass().getName()=="system.Tree") {
@@ -274,8 +269,7 @@ public class FileSystem {
      * @return Directory if exists, null otherwise
      */
     public Tree DirExists(String[] name) {
-        if (name == null || name.length == 0)
-            return null;
+
         Node found = PathExists(name);
 
         if (found == null || found.getClass().getName().equals("system.Leaf")) {

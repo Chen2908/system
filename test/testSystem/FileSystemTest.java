@@ -205,8 +205,8 @@ public class FileSystemTest {
     }
 
     @Test
-    public void fileExistsFileIsNull() {
-        String [] filepath = null;
+    public void fileExistsFileOnlyRoot() {
+        String [] filepath = {"root"};
         assertNull(fileSystem.FileExists(filepath));
     }
 

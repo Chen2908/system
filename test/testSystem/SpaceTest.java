@@ -1,5 +1,9 @@
 package testSystem;
 
+import system.FileSystem;
+import Stubs.LeafStub;
+import Stubs.SpaceStub;
+import Stubs.TreeStub;
 import org.junit.Before;
 import org.junit.Test;
 import system.*;
@@ -11,7 +15,7 @@ public class SpaceTest {
     private Space space;
     private LeafStub leafStub;
     private TreeStub parentOfLeafStub ;
-    private SpaceStub SpaceStub;
+    private Stubs.SpaceStub SpaceStub;
     public static final int SIZE = 10;
 
 
@@ -22,7 +26,8 @@ public class SpaceTest {
         FileSystem.fileStorage = SpaceStub;
         parentOfLeafStub = new TreeStub("A");
         leafStub = new LeafStub("Aa", 2);
-        leafStub.setParent(parentOfLeafStub);
+        leafStub.parent=parentOfLeafStub;
+
     }
 
 
