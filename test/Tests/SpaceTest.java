@@ -1,4 +1,4 @@
-package testSystem;
+package Tests;
 
 import system.FileSystem;
 import Stubs.LeafStub;

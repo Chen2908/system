@@ -1,4 +1,4 @@
-package testSystem;
+package Tests;
 
 import org.junit.Test;
 import system.FileSystem;
